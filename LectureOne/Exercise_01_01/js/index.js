@@ -62,7 +62,7 @@
   return Math.sqrt(square(a) + square(b));
 }
   console.log(hypotenuse(4,9));
-
+console.log("BITCH GET TO WORK");
 
     //
     // const hypotenuse = (a,b) => {const square = (x) => x * x; return ((a*a) + (b*b));}
