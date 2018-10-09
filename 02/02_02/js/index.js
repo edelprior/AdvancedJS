@@ -1,69 +1,65 @@
-// const password = document.getElementById("pw");
-//
-//
-//
-// password.addEventListener('keyup', function (evt) {
-//     if (this.value.length > 10) {
-//         this.style.color = 'green';
-//
-//     }
-//     else {
-//         this.style.color = 'red';
-//     }
-//
-//
-// });
-//
-//
-//
-//
-//
+// Advanced JS Module
+// Edel Prior
+// Using nodemon in the terminal as a live server and repersentation of JS
+// October 2018 Year 4
+// ***********************************************************************
+// ****************** PART TWO :: CONTROL FLOW & HOISTING ****************
+// ***********************************************************************
 
 
+// Don't forget JS/ in front of running tag when in nodemon i.e nodemon js/index.js
 
 
+// ***********************************************************************
 
-
-//function checkPasswordLength()  {
-//    let password = document.getElementById('password');
-//    let goodColor = "#66cc66";
-//    let badColor = "#ff6666";
-//    let okayColor = "#ffa500";
-//
-//
-//    if(password.length > 6) {
-//    password.style.backgroundColor = badColor;
-//
-//    }
-//
-//    else if (password.length>7 && password.length<10) {
-//    password.style.backgroundColor = okayColor;
-//
-//    }
-//
-//    else {
-//    password.style.backgroundColor = goodColor;
-//
-//    }
-//}
+console.log("******");
+console.log("EXAMPLE 1");
 
 //
-// function hypotenuse(a, b) {
-//   function square(x){
-//     return x * x;
-//   }
-//   return Math.sqrt(square(a) + square(b));
-//   }
-//   console.log(hypotenuse(4,8));
+ let isNightTime = true;
+// if (isNightTime) {
+//   console.log('Turn on the lights!');
+// }else {
+//   console.log('Turn off the lights!');
+// }
 
+// ============================
 
-  const hypotenuse = (a,b) => {
-  const square = x => x * x;
-  return Math.sqrt(square(a) + square(b));
+isNightTime ? console.log('Turn on the Lights!') : console.log('Turn off the lights!');
+
+// ***********************************************************************
+
+console.log("*******");
+console.log("EXAMPLE 2");
+
+let moonPhase = 'full';
+switch(moonPhase){
+  case 'full':
+  console.log('Howl');
+  break;
+  case 'mostly full':
+  console.log('Arms and legs are getting hairier');
+  break;
+  case 'mostly new':
+  console.log("back on two feet");
+  break;
+  default:
+  console.log("Invalid moon phase");
+  break;
 }
-  console.log(hypotenuse(4,9));
-console.log("BITCH GET TO WORK");
 
-    //
-    // const hypotenuse = (a,b) => {const square = (x) => x * x; return ((a*a) + (b*b));}
-    // console.log(hypotenuse(4,9));
+// ***********************************************************************
+
+console.log("*****");
+console.log("EXAMPLE 3");
+
+let a;
+console.log(a);
+// undefined
+
+let b = null;
+console.log(b);
+// null
+
+console.log(c);
+// not defined

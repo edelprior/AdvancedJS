@@ -1,69 +1,23 @@
-// const password = document.getElementById("pw");
-//
-//
-//
-// password.addEventListener('keyup', function (evt) {
-//     if (this.value.length > 10) {
-//         this.style.color = 'green';
-//
-//     }
-//     else {
-//         this.style.color = 'red';
-//     }
-//
-//
-// });
-//
-//
-//
-//
-//
+// Advanced JS Module
+// Edel Prior
+// Using nodemon in the terminal as a live server and repersentation of JS
+// October 2018 Year 4
+// ***********************************************************************
+// ****************** PART ONE :: FUNCTION EXPRESSIONS ****************
+// ***********************************************************************
 
 
+// Don't forget JS/ in front of running tag when in nodemon i.e nodemon js/index.js
 
+// A function expression is the same as a decleration except it can be anonymous and still work
+// often stored as a var and end with a [;]
+// doesn't actually have the word 'function' at the beginning
 
+const calculateTax = function (cost) {
+  const taxRate = .23;
+  return cost * taxRate;
+};
 
+let costOfCar = 40000;
 
-//function checkPasswordLength()  {
-//    let password = document.getElementById('password');
-//    let goodColor = "#66cc66";
-//    let badColor = "#ff6666";
-//    let okayColor = "#ffa500";
-//
-//
-//    if(password.length > 6) {
-//    password.style.backgroundColor = badColor;
-//
-//    }
-//
-//    else if (password.length>7 && password.length<10) {
-//    password.style.backgroundColor = okayColor;
-//
-//    }
-//
-//    else {
-//    password.style.backgroundColor = goodColor;
-//
-//    }
-//}
-
-//
-// function hypotenuse(a, b) {
-//   function square(x){
-//     return x * x;
-//   }
-//   return Math.sqrt(square(a) + square(b));
-//   }
-//   console.log(hypotenuse(4,8));
-
-
-  const hypotenuse = (a,b) => {
-  const square = x => x * x;
-  return Math.sqrt(square(a) + square(b));
-}
-  console.log(hypotenuse(4,9));
-console.log("BITCH GET TO WORK");
-
-    //
-    // const hypotenuse = (a,b) => {const square = (x) => x * x; return ((a*a) + (b*b));}
-    // console.log(hypotenuse(4,9));
+console.log(calculateTax(costOfCar));
