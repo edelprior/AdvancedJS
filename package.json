@@ -18,5 +18,8 @@
   "homepage": "https://github.com/edelprior/AdvancedJS#readme",
   "devDependencies": {
     "nodemon": "^1.18.4"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
   }
 }
