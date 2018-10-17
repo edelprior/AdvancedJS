@@ -234,11 +234,34 @@
 // only function so far that takes two params
 // takes an accumulator and a key value
 
-const prices = [100, 200, 300];
-
-const totalPrice = 0;
-const reducedValue = prices.reduce((totalPrice, value) => totalPrice + value);
-console.log(reducedValue);
+// const prices = [100, 200, 300];
+//
+// const totalPrice = 0;
+// const reducedValue = prices.reduce((totalPrice, value) => totalPrice + value);
+// console.log(reducedValue);
 
 // total in a shopping cart for example
 // used all the time
+
+//Task Seven
+
+const words = ['flabbergasted', 'outrageous', 'crazy', 'absurd'];
+const longWord = words.reduce((sum, value) => {
+  if(value.length > 6) {
+    sum += value.length;
+
+  }
+  return sum;
+
+}, 0);
+console.log(longWord);
+
+// ///
+// const dictionary = ['flabbergasted', 'outrageous', 'crazy', 'absurd'];
+// const lengthLong = dictionary.reduce((sum, value) => {
+//   if(value.length > 6) {
+//     sum+= value.length;
+// }
+// return sum;
+// }, 0);
+// console.log(lengthLong);
