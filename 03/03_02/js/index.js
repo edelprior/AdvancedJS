@@ -9,7 +9,7 @@
 
 // Don't forget JS/ in front of running tag when in nodemon i.e nodemon js/index.js
 
-// A function expression is the same as a decleration except it can be anonymous and still work
+// A function expression is the same as a declaration except it can be anonymous and still work
 // often stored as a var and end with a [;]
 // doesn't actually have the word 'function' at the beginning
 

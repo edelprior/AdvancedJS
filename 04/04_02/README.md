@@ -1,1 +1,12 @@
-#Place appropriate notes in here, you lazy dick
+# Creating Arrays
+___
+### Need to do
+
+```javascript
+
+ ```
+
+
+```javascript
+
+```

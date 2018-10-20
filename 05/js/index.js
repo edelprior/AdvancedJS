@@ -1,5 +1,10 @@
-# Iterators
-___
+// Advanced JS Module
+// Edel Prior
+// Using nodemon in the terminal as a live server and repersentation of JS
+// October 2018 Year 4
+// ***********************************************************************
+// ****************** ITERATORS **********************
+// ***********************************************************************
 
 
 // Don't forget JS/ in front of running tag when in nodemon i.e nodemon js/index.js
@@ -229,11 +234,34 @@ ___
 // only function so far that takes two params
 // takes an accumulator and a key value
 
-const prices = [100, 200, 300];
-
-const totalPrice = 0;
-const reducedValue = prices.reduce((totalPrice, value) => totalPrice + value);
-console.log(reducedValue);
+// const prices = [100, 200, 300];
+//
+// const totalPrice = 0;
+// const reducedValue = prices.reduce((totalPrice, value) => totalPrice + value);
+// console.log(reducedValue);
 
 // total in a shopping cart for example
 // used all the time
+
+//Task Seven
+
+const words = ['flabbergasted', 'outrageous', 'crazy', 'absurd'];
+const longWord = words.reduce((sum, value) => {
+  if(value.length > 6) {
+    sum += value.length;
+
+  }
+  return sum;
+
+}, 0);
+console.log(longWord);
+
+// ///
+// const dictionary = ['flabbergasted', 'outrageous', 'crazy', 'absurd'];
+// const lengthLong = dictionary.reduce((sum, value) => {
+//   if(value.length > 6) {
+//     sum+= value.length;
+// }
+// return sum;
+// }, 0);
+// console.log(lengthLong);

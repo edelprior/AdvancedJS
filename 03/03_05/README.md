@@ -1,1 +1,17 @@
-#Place appropriate notes in here, you lazy dick
+
+# Nested Functions
+___
+
+* 
+*
+
+## Example 1
+#### Before Refactoring
+```javascript
+
+ }
+```
+#### After Refactoring
+```javascript
+
+```
