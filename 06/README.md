@@ -1,6 +1,6 @@
 # Objects
 
-## _1. Accessing property value pairs inside objects_
+## _1. Accessing Property Value Pairs inside Objects_
 
 ```javascript
 const person = {
@@ -54,7 +54,7 @@ console.log(person.name);
     and  even though they're defined as different datatypes, they behave like OBJECTS
 -   The whole thing in the object is a property. Inside the property is a name and value
 
-# 3._ The literal way to create Objects_
+# 3._The literal way to create Objects_
 
 ```javascript
 let empty = {};
