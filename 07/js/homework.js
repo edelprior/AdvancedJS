@@ -38,6 +38,6 @@ class ElectricCar extends Car {
 
   }
   print() {
-    console.log(``);
+    console.log(`test`);
   }
 }
