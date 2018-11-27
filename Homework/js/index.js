@@ -11,52 +11,46 @@
 console.log("- - - - - - - - - - - - - -  ");
 console.log("Object Oriented Programming");
 console.log("- - - - - - - - - - - - - -  ");
-//
-// class Car {
-//   constructor(make, model, price) {
-//     this.make = make;
-//     this.model = model;
-//     this.price = price;
-//   }
-//   print() {
-//     console.log(`The Car's
-//     manufacturer is ${this.make}. The model is ${this.model}
-//     and the price of the car is ${this.price}`);
-//   }
-// }
-//
-// // won't pick up the super variables (make, model, price)
-//
-//
-// const Nissan = new Car("Almera");
-// Nissan.print();
-//
-// const Honda = new Car("Civic");
-// Honda.print();
-//
-// class ElectricCar extends Car {
-//   constructor(range, autonomous) {
-//     super(make, model, price);
-//     this.range = range;
-//     this.autonomous = autonomous;
-//   }
-//   print() {
-//     console.log(`The Car's
-//     manufacturer is ${this.make}. The model is ${
-//       this.model
-//     } and the price of the car is ${this.price}.
-//     The car is a n electric and it's range is ${this.range} miles. It is ${
-//       this.autonomous
-//     } to say that the car
-//     is automatic.`);
-//   }
-//
-//
-// const prius = new ElectricCar("35,000", "true");
-// prius.print();
-//
-// console.log(prius instanceof ElectricCar);
-// console.log(prius instanceof Car);
+
+class Car {
+  constructor(make, model, price) {
+    this.make = make;
+    this.model = model;
+    this.price = price;
+  }
+  print() {
+    console.log(`The Car's manufacturer is ${this.make}. The model is ${this.model} and the price of the car is ${this.price}`);
+  }
+}
+
+// won't pick up the super variables (make, model, price)
+
+
+const Nissan = new Car("Nissan", "Almera" , "4,500");
+Nissan.print();
+
+
+// child class that inherits from the super
+class ElectricCar extends Car {
+  //constructor(range, autonomous) {
+ //super(make, model, price);
+    //  Car.call(this,make,model,price);
+constructor(make,model,price, range,autonomous) {
+
+super(make, model, price);
+    this.range = range;
+    this.autonomous = autonomous;
+  }
+  print() {
+    console.log(`The Car's manufacturer is ${this.make}. The model is ${this.model} and the price of the car is ${this.price}. The car is a n electric and it's range is ${this.range} miles. It is ${this.autonomous} to say that the car is automatic.`);
+  }
+
+}
+const prius = new ElectricCar("Nissan", "Prius", "12,500", "650,000" , "true");
+prius.print();
+
+console.log(prius instanceof ElectricCar);
+console.log(prius instanceof Car);
 
 // ----------------------------------
 // #2 :Classical Classes Activity CAR
@@ -85,9 +79,11 @@ console.log("- - - - - - - - - - - - - -  ");
 //   this.autonomous = autonomous;
 // }
 //
+// // inheriting from the 'Car' super
 // ElectricCar.prototype = Object.create(Car.prototype);
 // ElectricCar.prototype.constructor = ElectricCar;
 //
+// // call super method
 // ElectricCar.prototype.print = function() {
 //   console.log(`The Car's
 //     manufacturer is ${this.name}. The model is
@@ -98,16 +94,17 @@ console.log("- - - - - - - - - - - - - -  ");
 //
 // const prius = new ElectricCar("35,000", "true");
 // prius.print();
-//
+
 // console.log(prius instanceof ElectricCar);
 // console.log(prius instanceof Car);
 
 // -----------------------------------
 // #3 :Prototypal Classes Activity CAR
 // -----------------------------------
-//
-// const Car = {
-//   constructor: function(name) {
+
+// let Car = {
+// name:'Ford',
+// init: function(name) {
 //     this.name = name;
 //   },
 //   print: function() {
@@ -126,5 +123,5 @@ console.log("- - - - - - - - - - - - - -  ");
 //
 // const prius = Object.create(ElectricCar);
 // prius.constructor("Betty");
-// //prius.range("35,000");
+// prius.range("35,000");
 // prius.print();
