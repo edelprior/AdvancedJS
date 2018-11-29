@@ -18,7 +18,7 @@ background(255);
   for(let i = 0; i < circles.length; i++) {
     circles[i].moveCircle(); // call each method #1 and #2
     circles[i].drawCircle();
-    
+  //  circles[i].checkEdges();
   }
   for(let i = 0; i < bouncingCircles.length; i++) {
     bouncingCircles[i].moveCircle(); // call each method #1 and #2
