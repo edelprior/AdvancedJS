@@ -9,22 +9,40 @@ import User from "./User"
 import data from "./data";
 import axios from 'axios';
 
+
+
+class UserGrid extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {users: []};
+  }
+
+  ComponentDidMount() {
+    axios.get('https://randomuser.me/api/?results=50')
+         .then(response => {
+           this.setstate(users :response.data.results);
+         })
+         .catch(err => {
+           console.log(err);
+         })
+  }
+
+  render() {
+    const userList = users.map(u => (
+      <User
+        key={u.name.first}
+        name={u.name}
+        image={u.picture.medium}
+        quote={u.quote}
+      />
+    ));
+  }
+}
+
+
 const users = data.results;
 
-// * * * *
-// * * * *
-
-
-// * * * *
-
-const userList = users.map(u => (
-  <User
-    key={u.name.first}
-    name={u.name}
-    image={u.picture.medium}
-    quote={u.quote}
-  />
-));
 
 // * * * *
 
