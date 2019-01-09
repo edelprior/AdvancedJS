@@ -1,28 +1,25 @@
-// ANDREWS EXAMPLE
-
-
 import React from "react";
 import ReactDOM from "react-dom";
-import User from "./User";
+import Comment from "./Comment";
 // Note: ensure you've installed axios with 'npm install axios'
 import axios from "axios";
 
-// 'Outer' component that will contain all the User 'cards'
-class UserGrid extends React.Component {
+class CommentList extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { users: [] };
+    // this is where we will store the comments, when they have been retrieved
+    this.state = { comments: [] };
   }
 
   // Runs when component is mounted
   componentDidMount() {
-    // Get data for 50 users
+    // Get data for 500 comments
     axios
-      .get("https://randomuser.me/api/?results=50")
+      .get("https://jsonplaceholder.typicode.com/comments/")
       .then(response => {
-        // GET request was successful, store the users in state
-        this.setState({ users: response.data.results });
+        // GET request was successful, store the comments in state
+        this.setState({ comments: response.data });
       })
       .catch(err => {
         // GET failed, log the error
@@ -31,17 +28,18 @@ class UserGrid extends React.Component {
   }
 
   render() {
-    const userList = this.state.users.map(u => (
-      <User
-        key={u.name.first}
-        name={u.name.first}
-        image={u.picture.medium}
-        quote={u.quote}
+    // For each comment, generate a Comment component and pass data in as props
+    const commentList = this.state.comments.map(item => (
+      <Comment
+        key={item.id}
+        name={item.name}
+        email={item.email}
+        body={item.body}
       />
     ));
 
-    return <div className="columns is-multiline">{userList}</div>;
+    return <div className="columns is-multiline">{commentList}</div>;
   }
 }
 
-ReactDOM.render(<UserGrid />, document.getElementById("root"));
+ReactDOM.render(<CommentList />, document.getElementById("root"));
