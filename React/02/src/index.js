@@ -5,49 +5,45 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import User from "./User"
-import data from "./data";
-import axios from 'axios';
+import axios from "axios";
 
 
-
-class UserGrid extends React.Component {
-  constructor(props){
+class Color extends React.Component {
+  constructor(props) {
     super(props);
 
-    this.state = {users: []};
+    this.state = { colors: [] };
   }
 
-  ComponentDidMount() {
-    axios.get('https://randomuser.me/api/?results=50')
-         .then(response => {
-           this.setstate(users :response.data.results);
-         })
-         .catch(err => {
-           console.log(err);
+  componentDidMount() {
+
+      axios.get('http://www.colr.org/json/colors/random/7')
+           .then(response => {
+             //console.log(response.data.colors);
+             this.setState({ colors:response.data.colors});
+           })
+           .catch(err => {
+             console.log(err);
          })
   }
 
   render() {
-    const userList = users.map(u => (
-      <User
-        key={u.name.first}
-        name={u.name}
-        image={u.picture.medium}
-        quote={u.quote}
+    //console.log(this.state.colors);
+    const colorList = this.state.colors.map(c =>
+      <Color
+        key = {c.id}
+        hex = {c.hex}
+        name = {c.name}
       />
-    ));
+    );
+    return (
+      <div> {colorList} </div>
+   );
   }
 }
 
-
-const users = data.results;
-
-
-// * * * *
-
 ReactDOM.render(
-  <div className="column-is-multiline">{userList}</div>,
+  <Color />,
   document.getElementById("root")
 );
 
@@ -57,3 +53,4 @@ ReactDOM.render(
 // it might access the incorrect State
 // thats why we're using the prevState =>
 // only necessary when you're taking the current state and modifying it to a new one
+//       let colors = data.results;

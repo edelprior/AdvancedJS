@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 
-class User extends React.Component {
+class Color extends React.Component {
   constructor(props) {
     super(props);
 
