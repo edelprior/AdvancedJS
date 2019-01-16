@@ -1,6 +1,5 @@
 // ANDREWS EXAMPLE
 
-
 import React from "react";
 import ReactDOM from "react-dom";
 import User from "./User";
@@ -23,6 +22,7 @@ class UserGrid extends React.Component {
       .then(response => {
         // GET request was successful, store the users in state
         this.setState({ users: response.data.results });
+        console.log(response.data.results);
       })
       .catch(err => {
         // GET failed, log the error

@@ -1,6 +1,11 @@
-# Objects
+# React
 
-## _1. Accessing Property Value Pairs inside Objects_
+## _The Fundamentals_
+
+- A JS library that builds a UI made by Facebook
+- Facebook, Instagram, Netflix, WhatsApp etc.
+
+#### React has _reactive_ updates. This means when the state of a component changes, the UI is automatically changed to reflect this.
 
 ```javascript
 const person = {

@@ -1,15 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
-// Component to represent a single User 'Card' (note: this is a class component so can use state)
-// Classes used below are from Bulma, see index.html above
 class Comment extends React.Component {
   constructor(props) {
     super(props);
 
     // Setup the state data
     this.state = {
-      likes: 0
+      flagged: false
     };
 
     // This binding is necessary to make `this` work in the onclick callback
@@ -18,23 +15,37 @@ class Comment extends React.Component {
 
   // Event handler for the button
   handleClick() {
-    // Increment the likes property stored in state
+    // When clicked flip between flagged/not flagged
     this.setState(prevState => ({
-      likes: prevState.likes + 1
+      flagged: !prevState.flagged
     }));
   }
 
-  // Define what happens when this componet gets drawn on the UI
+  // Define what happens when this component gets drawn on the UI
+  // Note the two instances of conditional rendering { ___ ? ___ : ____ }
   render() {
     return (
-      <div className="column is-12">
+      <div className="column is-half is-offset-one-quarter">
+        <div
+          className={
+            this.state.flagged
+              ? "card notification is-danger"
+              : "card notification is-primary"
+          }
+        >
+          <div className="card-content">
+            <div className="media">
+              <div className="media-content">
                 <p className="title is-4">{this.props.name}</p>
-                <p className="subtitle">{this.props.email}</p>
-                <h1>Likes: {this.state.likes}</h1>
+                <p className="subtitle is-6">{this.props.email}</p>
+                <p className="subtitle">{this.props.body}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
-
+  }
 }
-
-
 // Allow this to be imported by another JS file
 export default Comment;
