@@ -18,9 +18,10 @@ class ArticleList extends React.Component {
         "https://content.guardianapis.com/search?api-key=b21e1e64-196e-4742-b2b9-5d8ebdbdf57d"
       )
       .then(response => {
-        this.setState({ articles: response.data.response.results });
+        this.setState({ articles: response.results });
         //    this.setState({ returnValue: response.data.response.status });
         //    console.log(this.state);
+        console.log(this.state);
       })
       .catch(err => {
         console.log(err);
@@ -41,7 +42,7 @@ class ArticleList extends React.Component {
       />
     ));
 
-    return <div className="columns is-multiline"> {articleList}</div>;
+    return <div> {articleList}</div>;
   }
 }
 
