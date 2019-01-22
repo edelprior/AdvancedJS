@@ -8,8 +8,6 @@ class ArticleList extends React.Component {
     super(props);
 
     this.state = { articles: [] };
-
-    //  console.log(this.state);
   }
 
   componentDidMount() {
@@ -17,32 +15,35 @@ class ArticleList extends React.Component {
       .get(
         "https://content.guardianapis.com/search?api-key=b21e1e64-196e-4742-b2b9-5d8ebdbdf57d"
       )
-      .then(response => {
-        this.setState({ articles: response.results });
-        //    this.setState({ returnValue: response.data.response.status });
-        //    console.log(this.state);
+      .then(responseArray => {
+        this.setState({
+          articles: responseArray.data.response.results
+        });
         console.log(this.state);
+        // issue here
+        console.log(this.state.responseArray[0]);
       })
-      .catch(err => {
-        console.log(err);
+      .catch(error => {
+        console.log(error);
       });
   }
 
-  // * * * * * * * * * * * *
-
   render() {
-    // For each Article generate a component and pass data as props
-    const articleList = this.state.articles.map(x => (
-      <Article
-        key={x.id}
-        name={x.pillarName}
-        section={x.sectionName}
-        title={x.webTitle}
-        link={x.webUrl}
-      />
-    ));
+    // const articleList = this.state.articles.map(item => (
+    //   <Article
+    //     key={item.id}
+    //     name={item.pillarName}
+    //     section={item.sectionName}
+    //     title={item.webTitle}
+    //   />
+    // ));
 
-    return <div> {articleList}</div>;
+    return (
+      <div>
+        {" "}
+        <h1> test </h1>{" "}
+      </div>
+    );
   }
 }
 
