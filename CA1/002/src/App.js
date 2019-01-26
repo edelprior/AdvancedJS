@@ -9,7 +9,7 @@ class App extends React.Component {
   render() {
     return (
       /// grid
-      <div>
+      <div className="column is multiline">
         <ArticleList />
       </div>
     );
