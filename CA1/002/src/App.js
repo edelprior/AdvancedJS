@@ -2,9 +2,9 @@ import React from "react";
 import NewsCard from "./Components/NewsCard";
 import DropDown from "./Components/DropDown";
 import LabelledInput from "./Components/LabelledInput";
-//import NavBar from "./Components/NavBar";
+import NavBar from "./Components/NavBar";
 import axios from "axios";
-
+//import Router from "Router";
 class App extends React.Component {
   constructor() {
     super();
@@ -34,26 +34,33 @@ class App extends React.Component {
   }
 
   handleChange(event) {
+
     const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.pillarName;
+    const value = target.value;
+    const name = target.name;
+
 
     this.setState({
       [name]: value
     });
   }
+
   handleClick(event) {
+
     const name = event.target.name;
     this.setState(prevState => ({
       [name]: !prevState[name]
     }));
   }
+
   render() {
-    let articleList = this.state.articles.map(article => {
+
+      let articleList = this.state.articles.map(article => {
       const sectionMatch =
-        this.state.sectionSelected === article.sectionName ||
+        this.state.sectionSelected === article.pillarName ||
         this.state.sectionSelected === "all";
-      const searchMatch = article.webTitle.startsWith(this.state.searchText);
+
+      const searchMatch = article.webTitle.toLowerCase().startsWith(this.state.searchText.toLowerCase());
       return sectionMatch && searchMatch ? (
         <NewsCard
           key={article.id}
@@ -64,25 +71,35 @@ class App extends React.Component {
       ) : null;
     });
     return (
+
       <section>
+      <BrowserRouter>
+      <div>
+      <h1> 
+
         <div className="column is multiline">
+
+        <div className = "column is-4">
           <DropDown
-            options={["all", "Politics", "Culture", "Lifestyle"]}
+            options={["all", "News", "Sport", "Arts", "Opinion"]}
             handleChange={this.handleChange}
             label="Filter by Section"
+            name="sectionSelected"
             selected={this.state.sectionSelected}
           />
           <LabelledInput
             name="searchText"
             label="Search by Title"
             value={this.state.searchText}
-            onChange={this.handleChange}
-            placeholder={"e.g. Corbyn"}
+            handleChange={this.handleChange}
+            placeholder={"e.g. Brexit"}
           />
-          {console.log(this.state.searchText)}
+          </div>
+
           <div className="columns is-multiline">{articleList}</div>
         </div>
       </section>
+
     );
   }
 }

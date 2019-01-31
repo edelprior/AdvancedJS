@@ -11,17 +11,17 @@ class LabelledInput extends React.Component {
         <div className="field-body">
           <div className="field">
             <div className="control ">
-              {console.log(this.props.value)}
+
               <input
                 name={this.props.name}
                 value={this.props.value}
-                onChange={this.props.handleInputChange}
+                onChange={this.props.handleChange}
                 className="input"
                 type="text"
                 placeholder={this.props.placeholder}
               />
             </div>
-            {console.log(this.props.value)}
+
           </div>
         </div>
       </div>
