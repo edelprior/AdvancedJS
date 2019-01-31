@@ -13,7 +13,7 @@ class DropDown extends React.Component {
       <div className="field is-horizontal">
         <div className="field-label is-normal">
           <label className="label">{this.props.label}</label>
-          {console.log(this.props.label)}
+
         </div>
         <div className="field-body">
           <div className="field is-narrow">
