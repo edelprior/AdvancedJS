@@ -1,8 +1,8 @@
-import React from "react";
-import { Route, NavLink, BrowserRouter } from "react-router-dom";
-import Home from "./Navigation/Home";
-import Thatcher from "./Navigation/Thatcher";
-import Brexit from "./Navigation/Brexit";
+import React from 'react';
+import { Route, NavLink, BrowserRouter } from 'react-router-dom';
+import Home from './Navigation/Home';
+import Thatcher from './Navigation/Thatcher';
+import Brexit from './Navigation/Brexit';
 
 // eslint-disable-next-line
 {
