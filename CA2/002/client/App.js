@@ -1,0 +1,154 @@
+{/*
+  Functionality of App.js :
+
+  Main Page (Top page that is full of static
+  Components, Drawer, Top App Bar and Router)
+  These components will stay on every page, with only
+  <DrawerAppContent> being altered.
+  - - - - -
+  What is the Functionality?
+  - - - - -
+  Serves as the Beginning page of the application, is the
+  first thing the users sees, needs to have decent nav points
+  explain what the app is and catch the users attention.
+  */}
+
+
+// - - - React, Router and Styles  - - - - - - - - //
+
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import './App.scss';
+
+// - - - - -Material Imports - - - - - - - - - - - - - //
+
+import TopAppBar, { TopAppBarFixedAdjust } from '@material/react-top-app-bar';
+import Drawer, { DrawerAppContent, DrawerContent, DrawerHeader } from '@material/react-drawer';
+import MaterialIcon from '@material/react-material-icon';
+import List, { ListItem, ListItemGraphic, ListItemText } from '@material/react-list';
+import { Headline3 } from '@material/react-typography';
+
+// - - - - - - Components - - - - - - - - - - - - - - //
+
+import EditComment from './EditComment';
+import CreateComment from './CreateComment';
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+class App extends Component {
+
+  render() {
+    return (
+
+      <BrowserRouter>
+        <div className="drawer-container">
+          {/* - - - - - - - - - - - - - - - - - - - - - - - */}
+          <Drawer
+            className="drawer"
+            dismissible
+            open={this.state.open}
+            onClose={() => this.setState({ open: false })}
+          >
+            <DrawerContent>
+              <DrawerHeader>
+                <Link className="link" to="/">
+                  <ListItemGraphic className="logo" link="/" graphic={<MaterialIcon icon="accessibility" />} />
+                </Link>
+                <Headline3>
+              Advanced JS CA2
+                </Headline3>
+
+              </DrawerHeader>
+              {/* - - - - - - - - - - */}
+              <List className="NavList">
+                <ListItem>
+                  <Link className="link" to="/">
+                    <ListItemGraphic className="icon" graphic={<MaterialIcon icon="home" />} />
+                    <ListItemText className="NavText" primaryText="Home" />
+                  </Link>
+                </ListItem>
+
+                {/* * * * */}
+
+                <ListItem>
+                  <Link className="link" to="/EditComment">
+                    <ListItemGraphic className="icon" graphic={<MaterialIcon icon="folder" />} />
+                    <ListItemText className="NavText" primaryText="Edit Comment" />
+
+
+                  </Link>
+                </ListItem>
+
+                {/* * * * */}
+
+                <ListItem>
+                  <Link className="link" to="/examples">
+                    <ListItemGraphic className="icon" graphic={<MaterialIcon icon="code" />} />
+                    <ListItemText className="NavText" primaryText="Examples" />
+                  </Link>
+                </ListItem>
+                {/* * * * */}
+
+                <ListItem>
+                  <Link className="link" to="/CreateComment">
+                    <ListItemGraphic className="icon" graphic={<MaterialIcon icon="device_hub" />} />
+                    <ListItemText className="NavText" primaryText="Create Comment" />
+                  </Link>
+                </ListItem>
+
+                {/* * * * */}
+
+
+              </List>
+            </DrawerContent>
+          </Drawer>
+
+          {/* - - - - - - - - - - - - - - - - - - - - - - - */}
+
+          <DrawerAppContent className="drawer-app-content">
+            <TopAppBar
+              className="TopAppBar"
+              navigationIcon={(
+                <MaterialIcon
+                  className="menuicon"
+                  icon="menu"
+                  onClick={() => this.setState({ open: !this.state.open })}
+                />
+              )}
+            />
+            {/* Trying to get the Material Icon button to be Menu when the drawer is closed, and when open close icon */ }
+
+            <TopAppBarFixedAdjust>
+
+              <Route exact path="/" component={CommentList} />
+              <Route path="/CreateComment" component={CreateComment} />
+              <Route path="/EditComment" component={EditComment} />
+            </TopAppBarFixedAdjust>
+
+
+            {/* Path so the Router knows which component to show */ }
+          </DrawerAppContent>
+          {/* - - - - - - - - - - - - - - - - - - - - - - - */}
+
+          {/* Closing Divs for Container and BrowserRouter (BrowserRouter can only return one div) */}
+        </div>
+      </BrowserRouter>
+
+    );
+  }
+}
+
+// eslint-disable-next-line
+  {/*
+
+      - Declaring the state for the drawer as open when page is loaded.
+      - Everything must be wrapped in the BrowserRouter.
+      - Doesn't work with GH pages, will have to change
+        variable to HashRouter.
+      - Trying to get the Material Icon button to be Menu when the drawer
+        is closed, and when open close icon
+  */ }
+
+
+export default App;
