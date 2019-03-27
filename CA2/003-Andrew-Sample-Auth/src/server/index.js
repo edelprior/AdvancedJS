@@ -106,17 +106,15 @@ app.listen(process.env.PORT || 8080);
 // ------------------------------------------------- //
 
 app.get('./api/comments', (req, res) => {
+  User.find().toArray((err, result) => {
+      if (err) throw err;
+      console.log(result);
+      res.send(result);
   res.send(result);
 });
 
- // retrieve all comment objects from DB
- server.get('/api/comments', (req, res) => {
-   db.collection('comments').find().toArray((err, result) => {
-     if (err) throw err;
-    console.log(result);
-     res.send(result);
-   });
- });
+
+});
 //
 // // retrieve user with specific ID from DB
 // server.get('/api/comments/:id', (req, res) => {
