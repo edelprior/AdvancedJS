@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactModal from 'react-modal';
 import { Link, Route, Switch } from 'react-router-dom';
 import withAuth from './withAuth';
 import Home from './Home';
@@ -6,13 +7,28 @@ import Secret from './Secret';
 import Login from './Login';
 import Register from './Register';
 import axios from 'axios';
+import './App.scss';
+import Button from '@material/react-button';
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {loggedIn: false};
+    this.state = {
+      loggedIn: false,
+      showModal: true
+    };
     this.logout = this.logout.bind(this);
     this.login = this.login.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+
+  handleOpenModal() {
+    this.setState({ showModal: true });
+  }
+
+  handleCloseModal() {
+    this.setState({ showModal: false });
   }
 
   logout(props) {
@@ -47,6 +63,20 @@ class App extends Component {
           <Route path="/login" render={(props) => <Login {...props} handleLogin={this.login} />} />
           <Route path="/logout" render={this.logout}/>
         </Switch>
+        <div>
+          <Button raised onClick={this.handleOpenModal}>Register Here</Button>
+
+
+          <ReactModal
+            isOpen={this.state.showModal}
+            onRequestClose={this.handleCloseModal}
+            className="Modal"
+            overlayClassName="Overlay"
+          >
+            <Register />
+            <button onClick={this.handleCloseModal}>Close Modal</button>
+          </ReactModal>
+        </div>
       </div>
     );
   }
