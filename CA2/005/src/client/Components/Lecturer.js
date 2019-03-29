@@ -4,10 +4,14 @@ import { Link } from 'react-router-dom';
 class Lecturer extends React.Component {
   render() {
     return (
+
+
       <div>
         <div>
-          {console.log(this.props)}
-          <h3>{this.props.name}</h3>
+      
+          <p>{this.props.name}</p>
+          <p>Office: {this.props.office}</p>
+          <p>Email: {this.props.email}</p>
 
           <Link to={`/module/${this.props.id}`}>
             <button type="button">

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './app.css';
-import Module from './Module';
+import '../app.scss';
 
 class ModuleList extends Component {
   constructor(props) {
@@ -21,7 +20,6 @@ class ModuleList extends Component {
   }
 
   render() {
-
     const moduleList = this.state.modules.map(u => (
       <Module
         key={u._id}
@@ -43,5 +41,15 @@ class ModuleList extends Component {
     );
   }
 }
+
+const Module = (props) => {
+  return (
+    <div>
+      <h2>{props.name}</h2>
+      <p>Credits: {props.credits}</p>
+      <p>Runs for {props.weeks} weeks</p>
+    </div>
+  );
+};
 
 export default ModuleList;

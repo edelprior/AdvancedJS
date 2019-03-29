@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-const mongo_uri = 'mongodb://localhost/lecturer-modules';
+const mongo_uri = 'mongodb://localhost/REACTCA2';
 mongoose.connect(mongo_uri, { useNewUrlParser: true }, function(err) {
   if (err) {
     throw err;

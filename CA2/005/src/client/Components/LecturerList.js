@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Lecturer from './Lecturer';
 import axios from 'axios';
-import './app.css';
+import '../app.scss';
 
 class LecturerList extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class LecturerList extends Component {
 
     return (
       <div>
-        <h2>All Lecturers</h2>
+        <h1>List</h1>
         <div>{lecturerList}</div>
       </div>
     );
