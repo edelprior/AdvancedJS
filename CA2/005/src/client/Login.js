@@ -3,7 +3,8 @@ import axios from 'axios';
 import TextField, {HelperText, Input} from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
 import Button from '@material/react-button';
-
+import Avatar from 'react-avatar';
+import {Cell, Grid, Row} from '@material/react-layout-grid';
 import './App.scss';
 export default class Login extends Component {
   constructor(props) {
@@ -46,31 +47,52 @@ export default class Login extends Component {
 
   render() {
     return (
-      <form className = "LoginForm"onSubmit={this.onSubmit}>
+      <Grid className = "LoginForm">
+        <Row>
 
-        <TextField className = "Search">
-          <Input
-            type="email"
-            name="email"
-            placeholder="email"
-            value={this.state.email}
-            onChange={this.handleInputChange}
-            required />
-        </TextField>
+          <Cell columns = {12}>
+            <Avatar className = "LoginAvatar"
+              round = {true} color={Avatar.getRandomColor('sitebase', ['red', 'black', 'black'])} name="E" />
 
+            <form onSubmit={this.onSubmit}>
+              <TextField outlined className = "LoginEmail">
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="email"
+                  value={this.state.email}
+                  onChange={this.handleInputChange}
+                  required />
+              </TextField>
+            </form>
+          </Cell>
+        </Row>
+        <Row>
+          <Cell columns = {12}>
+            <form onSubmit = {this.onSubmit}>
+              <TextField outlined className = "LoginPassword">
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="Enter password"
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                  required
+                />
+              </TextField>
+            </form>
+          </Cell>
+        </Row>
+        <Row>
+          <Cell columns = {12}>
+            <form onSubmit = {this.onSubmit}>
+              <Button className = "LoginButton" raised type="submit" value="Submit"> Log In </Button>
+            </form>
+          </Cell>
+        </Row>
 
-        <TextField className = "Search">
-          <Input
-            type="password"
-            name="password"
-            placeholder="Enter password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-            required
-          />
-        </TextField>
-        <Button dense type="submit" value="Submit"> Log In </Button>
-      </form>
+      </Grid>
+
     );
   }
 }

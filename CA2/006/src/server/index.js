@@ -4,14 +4,17 @@ const ObjectID = require('mongodb').ObjectID;
 const bodyParser = require('body-parser');
 
 const server = express();
+const dbname = 'REACTCA2'; // change to match your database name
+
+// serve files from the dist directory
 server.use(express.static('dist'));
 
 // URL to our DB - will be loaded from an env variable or will use local DB
+const dbroute = process.env.MONGODB_URL || `mongodb://localhost:27017/${dbname}`;
 
-const dbroute = 'mongodb://localhost/REACTCA2';
-const dbname = 'React-CA2';
 let db;
 
+// connect to the db and start the express server
 MongoClient.connect(dbroute, (err, client) => {
   if (err) throw err;
 

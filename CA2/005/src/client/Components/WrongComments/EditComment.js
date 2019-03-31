@@ -2,7 +2,7 @@
   Functionality of EditComment.js :
 
   - Interacts with the Database for the Update function of CRUD
-  - Uses Axios to get users and place in state
+  - Uses Axios to get Comments and place in state
   - State object matches that of the object in MongoDB
   */}
 
@@ -21,20 +21,18 @@ import Button from '@material/react-button';
 // Stand alone Component (No imports needed)
 // - - - - - - - - - - - - - - - - - - - - - //
 
-class EditUser extends Component {
+class EditComment extends Component {
   constructor(props) {
     super(props);
 
-    // User object identical to that of the MongoDB
+    // Comment object identical to that of the MongoDB
 
     this.state = {
       _id: '',
-      name: '',
-      picture: '',
       comment: ''
     };
 
-    // handleChange for when user updates comment,
+    // handleChange for when Comment updates comment,
     // & handleSubmit for when they push it.
 
     this.handleChange = this.handleChange.bind(this);
@@ -43,11 +41,11 @@ class EditUser extends Component {
   // - - - - - - - - - - - - - - - - - - - - - //
 
   componentDidMount() {
-    // Fetch data relating to the user to be edited
+    // Fetch data relating to the comment to be edited
     // ID passed by the URL and accessed via props
     // Will need all this info for the 'new' comment
 
-    axios.get('/api/users/' + this.props.match.params.id)
+    axios.get('/api/comments/' + this.props.match.params.id)
       .then(response => {
         this.setState({
           _id: response.data._id,
@@ -81,7 +79,7 @@ class EditUser extends Component {
 
     // Puts 'new' comment back into the DB
     // Last interaction with the DB for this component
-    axios.put('/api/users', this.state)
+    axios.put('/api/comments', this.state)
       .then(res => this.props.history.push('/'))
       .catch(error => {
         console.log(error);
@@ -130,4 +128,4 @@ class EditUser extends Component {
   }
 }
 
-export default EditUser;
+export default EditComment;

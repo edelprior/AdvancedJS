@@ -1,8 +1,8 @@
 {/*
-  Functionality of User.js :
+  Functionality of Comment.js :
 
-  - Represents a single 'user' and its props
-  - Holds a router that renders the edit user through the <Link>
+  - Represents a single 'Comment' and its props
+  - Holds a router that renders the edit Comment through the <Link>
   - Delete function accessed through props via the parent component
   - Has Avatar CSS styles from material - ui
   */}
@@ -26,7 +26,7 @@ import MaterialIcon from '@material/react-material-icon';
 // (No imported Components as it is a standalone for export)
 // - - - - - - - - - - - - - - - - - - - - - //
 
-class User extends Component {
+class Comment extends Component {
 
   render() {
     return (
@@ -37,11 +37,7 @@ class User extends Component {
             {/* - - - - - - - - - - - - -*/}
             <List>
               <ListItem>
-                <Avatar alt="Profile" src={this.props.image} />
-                <Headline5 className = "ProfileName"> {this.props.name}</Headline5>
-              </ListItem>
-              <ListItem>
-                <Body1>   {this.props.comment} </Body1>
+                <Body1>   {this.props.commentTitle} </Body1>
               </ListItem>
             </List>
             {/* - - - - - - - - - - - - -*/}
@@ -56,7 +52,7 @@ class User extends Component {
 
           {/* - - - - - - - - - - - - -*/}
 
-          <Link to={`/edit-user/${this.props.id}`}>
+          <Link to={`/edit-Comment/${this.props.id}`}>
             <Button type="button">
              Edit
             </Button>
@@ -69,4 +65,4 @@ class User extends Component {
   }
 }
 
-export default User;
+export default Comment;

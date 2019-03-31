@@ -19,7 +19,7 @@ import Button from '@material/react-button';
 // - - - - - - - - - - - - - - - - - - - - - //
 
 
-class CreateUser extends Component {
+class CreateComment extends Component {
   constructor(props) {
     super(props);
 
@@ -32,7 +32,7 @@ class CreateUser extends Component {
       comment: ''
     };
 
-    // handleChange for when user updates comment,
+    // handleChange for when Comment updates comment,
     // & handleSubmit for when they push it.
 
     this.handleChange = this.handleChange.bind(this);
@@ -52,8 +52,8 @@ class CreateUser extends Component {
     event.preventDefault();
 
     // send a POST request to the server
-    // the request includes the state, which is the info. for the new user to be created
-    axios.post('/api/users', this.state)
+    // the request includes the state, which is the info. for the new comment to be created
+    axios.post('/api/comments', this.state)
       .then(res => this.props.history.push('/'))
       .catch(error => {
         console.log(error);
@@ -92,4 +92,4 @@ class CreateUser extends Component {
   }
 }
 
-export default CreateUser;
+export default CreateComment;

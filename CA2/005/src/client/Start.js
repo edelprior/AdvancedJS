@@ -10,7 +10,7 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-import { HashRouter, Route } from 'react-router-dom';
+import { Link, HashRouter, Route } from 'react-router-dom';
 import './App.scss';
 
 // - - - - - Material Imports - - - - - - - - - - //
@@ -18,15 +18,10 @@ import {Cell, Grid, Row} from '@material/react-layout-grid';
 import { Headline2, Headline4,Headline5, Body1} from '@material/react-typography';
 import Button from '@material/react-button';
 import MaterialIcon from '@material/react-material-icon';
-// - - - - - - - - - - - - - - - - - - - - - //
+import List, { ListItem, ListItemGraphic, ListItemText } from '@material/react-list';
 
-// - - - - - Components  - - - - - - - - - - //
-import CreateComment from './Components/CreateComment';
-import CommentList from './Components/CommentList';
-import EditComment from './Components/EditComment';
 
 // - - - - - - - - - - - - - - - - - - - - - //
-
 export default class Start extends Component {
   constructor() {
     super();
@@ -44,19 +39,7 @@ export default class Start extends Component {
 
     return (
 
-      <HashRouter>
-        <Grid>
-
-          <Row>
-            <Cell className = "commentSection" columns = {12}>
-              <Headline2 className = "commentTitle"> Comments </Headline2>
-              <Route exact path="/" component={CommentList}/>
-              <Route path="/edit-user/:id" component={EditComment}/>
-              <Route path="/create-user" component={CreateComment}/>
-            </Cell>
-          </Row>
-        </Grid>
-      </HashRouter>
+      <h1> start </h1>
     );
   }
 }

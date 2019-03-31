@@ -2,26 +2,25 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-class EditUser extends Component {
+class EditComment extends Component {
   constructor(props) {
     super(props);
-    // store information relating to the user in state
-    // should match the user object from the API
-    this.state = {_id: '', name: '', picture: ''};
+    // store information relating to the Comment in state
+    // should match the Comment object from the API
+    this.state = {_id: '', comments: ''};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    // when this Component mounts, fetch data relating to the user to be edited
-    // the user's ID is passed in via the URL and accessed via props
-    axios.get('/api/users/' + this.props.match.params.id)
+    // when this Component mounts, fetch data relating to the Comment to be edited
+    // the Comment's ID is passed in via the URL and accessed via props
+    axios.get('/api/comments/' + this.props.match.params.id)
       .then(response => {
         this.setState({
           _id: response.data._id,
-          name: response.data.name,
-          picture: response.data.picture,
+          comment: response.data.comment,
         });
       })
       .catch(error => {
@@ -42,8 +41,8 @@ class EditUser extends Component {
     event.preventDefault();
 
     // send a PUT request to the server
-    // the request includes the state, which is the updated user information
-    axios.put('/api/users', this.state)
+    // the request includes the state, which is the updated comment information
+    axios.put('/api/comments', this.state)
       .then(res => this.props.history.push('/')) // if successful go to home
       .catch(error => {
         console.log(error);
@@ -54,15 +53,11 @@ class EditUser extends Component {
     // note: name of the inputs must match the property names in state
     return (
       <div>
-        <h2>Edit User</h2>
+        <h2>Edit Comment</h2>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Name:
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
-          </label>
-          <label>
-            Image:
-            <input type="text" name="picture" value={this.state.picture} onChange={this.handleChange} />
+            New Comment:
+            <input type="text" name="comment" value={this.state.comment} onChange={this.handleChange} />
           </label>
           <input type="submit" value="Submit" />
         </form>
@@ -71,4 +66,4 @@ class EditUser extends Component {
   }
 }
 
-export default EditUser;
+export default EditComment;

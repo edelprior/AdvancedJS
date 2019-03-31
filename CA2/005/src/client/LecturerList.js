@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Lecturer from './Lecturer';
 import axios from 'axios';
-import '../app.scss';
+import './App.scss';
 
 class LecturerList extends Component {
   constructor(props) {

@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import TextField, {HelperText, Input} from '@material/react-text-field';
+import MaterialIcon from '@material/react-material-icon';
+import Button from '@material/react-button';
+import Avatar from 'react-avatar';
+import {Cell, Grid, Row} from '@material/react-layout-grid';
+import './App.scss';
 export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email : '',
-      password: ''
+      password: '',
+    //  secondpassword: ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -39,26 +45,61 @@ export default class Register extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <h1>Register Below!</h1>
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter email"
-          value={this.state.email}
-          onChange={this.handleInputChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter password"
-          value={this.state.password}
-          onChange={this.handleInputChange}
-          required
-        />
-        <input type="submit" value="Submit"/>
-      </form>
+      <Grid className = "RegisterForm">
+        <Row>
+          <Cell columns = {12}>
+            <Avatar className = "RegisterAvatar"
+              round = {true} color={Avatar.getRandomColor('sitebase', ['red', 'black', 'black'])} name="Reddit" />
+            <form  onSubmit={this.onSubmit}>
+              <TextField className = "RegisterEmail" outlined>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="email"
+                  value={this.state.email}
+                  onChange={this.handleInputChange}
+                  required
+                />
+
+              </TextField>
+            </form>
+          </Cell>
+        </Row>
+        <Row>
+          <Cell columns= {12}>
+            <form onSubmit = {this.onSubmit}>
+              <TextField className = "RegisterPassword" outlined>
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                  required
+                />
+              </TextField>
+              <TextField className = "RegisterPassword" outlined>
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="re-enter password"
+                  value={this.state.secondpassword}
+                  onChange={this.handleInputChange}
+
+                />
+              </TextField>
+            </form>
+          </Cell>
+        </Row>
+        <Row>
+          <Cell columns = {12}>
+            <form onSubmit = {this.onSubmit}>
+              <Button className = "RegisterButton" raised type="submit" value="Submit"> Register </Button>
+            </form>
+
+          </Cell>
+        </Row>
+      </Grid>
     );
   }
 }

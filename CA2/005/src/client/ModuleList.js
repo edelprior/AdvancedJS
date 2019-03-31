@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import '../app.scss';
+import './app.scss';
 
 class ModuleList extends Component {
   constructor(props) {

@@ -37,8 +37,8 @@ import Home from './Home';
 import Start from './Start';
 import Login from './Login';
 import Register from './Register';
-import LecturerList from './Components/LecturerList';
-import ModuleList from './Components/ModuleList';
+import LecturerList from './LecturerList';
+import ModuleList from './ModuleList';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 
@@ -83,10 +83,10 @@ class App extends Component {
             <DrawerContent>
               <DrawerHeader>
                 <Link className="link" to="/">
-                  <ListItemGraphic className="logo" link="/" graphic={<MaterialIcon icon="face" />} />
+                  <ListItemGraphic className="logo" link="/" graphic={<MaterialIcon icon="book" />} />
                 </Link>
                 <Headline3>
-            React CA2
+            ReactIt
                 </Headline3>
 
               </DrawerHeader>

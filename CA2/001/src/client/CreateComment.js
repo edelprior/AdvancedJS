@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-class CreateUser extends Component {
+class CreateComment extends Component {
   constructor(props) {
     super(props);
     // store form fields in state
-    this.state = {name: '', picture: ''};
+    this.state = {comment: ''};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,8 +25,8 @@ class CreateUser extends Component {
     event.preventDefault();
 
     // send a POST request to the server
-    // the request includes the state, which is the info. for the new user to be created
-    axios.post('/api/users', this.state)
+    // the request includes the state, which is the info. for the new Comment to be created
+    axios.post('/api/comments', this.state)
       .then(res => this.props.history.push('/')) // if successful go to home
       .catch(error => {
         console.log(error);
@@ -38,15 +38,12 @@ class CreateUser extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <h2>Create New User</h2>
+          <h2>Create New comment</h2>
           <label>
-            Name:
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+            Comment:
+            <input type="text" name="name" value={this.state.comment} onChange={this.handleChange} />
           </label>
-          <label>
-            Image:
-            <input type="text" name="picture" value={this.state.picture} onChange={this.handleChange} />
-          </label>
+
           <input type="submit" value="Submit" />
         </form>
       </div>
@@ -54,4 +51,4 @@ class CreateUser extends Component {
   }
 }
 
-export default CreateUser;
+export default CreateComment;
