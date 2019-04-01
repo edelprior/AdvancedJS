@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './app.scss';
 import Property from './Property';
+import {Cell, Grid, Row} from '@material/react-layout-grid';
 
 
 class PropertyList extends Component {
@@ -36,13 +37,15 @@ class PropertyList extends Component {
     ));
 
     return (
-      <div>
-        {propertyList.length ?
-          <div>
-            <h2> All Properties in the Area</h2>
-            <div>{propertyList}</div></div> :
-          <h2>No Properties available</h2> }
-      </div>
+      <Grid>
+        <Row>
+          {propertyList.length ?
+            <div>
+              <h2> All Properties in the Area</h2>
+              <div>{propertyList}</div></div> :
+            <h2>No Properties available</h2> }
+        </Row>
+      </Grid>
     );
   }
 }

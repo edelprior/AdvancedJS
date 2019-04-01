@@ -16,7 +16,6 @@
 // - - - React, Router and Styles  - - - - - - - - //
 
 import React, { Component } from 'react';
-import ReactModal from 'react-modal';
 import { Link, Route, Switch, HashRouter } from 'react-router-dom';
 import axios from 'axios';
 import './App.scss';
@@ -27,7 +26,7 @@ import Button from '@material/react-button';
 import Drawer, { DrawerAppContent, DrawerContent, DrawerHeader } from '@material/react-drawer';
 import MaterialIcon from '@material/react-material-icon';
 import List, { ListItem, ListItemGraphic, ListItemText } from '@material/react-list';
-import { Headline5 } from '@material/react-typography';
+import { Headline1 } from '@material/react-typography';
 import TopAppBar, { TopAppBarFixedAdjust } from '@material/react-top-app-bar';
 
 // - - - - - - Components - - - - - - - - - - - - - - //
@@ -88,16 +87,15 @@ class App extends Component {
                 <Link className="link" to="/">
                   <ListItemGraphic className="logo" link="/" graphic={<MaterialIcon icon="home" />} />
                 </Link>
-                <Headline5>
-            React Properties
-                </Headline5>
+                <Headline1>
+                Mad
+                </Headline1>
 
               </DrawerHeader>
               {/* - - - - - - - - - - */}
               <List className="NavList">
                 <ListItem>
                   <Link className="link" to="/">
-                    <ListItemGraphic className="icon" graphic={<MaterialIcon icon="home" />} />
                     <ListItemText className="NavText" primaryText="Home" />
                   </Link>
                 </ListItem>
@@ -105,30 +103,19 @@ class App extends Component {
                 {/* * * * */}
 
                 <ListItem>
-                  <Link className="link" to="/start">
-                    <ListItemGraphic className="icon" graphic={<MaterialIcon icon="folder" />} />
-                    <ListItemText className="NavText" primaryText="Start" />
-                  </Link>
-                </ListItem>
-                {/* * * * */}
-
-                <ListItem>
                   <Link className="link" to="/areas">
-                    <ListItemGraphic className="icon" graphic={<MaterialIcon icon="folder" />} />
                     <ListItemText className="NavText" primaryText="Areas" />
                   </Link>
                 </ListItem>
 
                 <ListItem>
                   <Link className="link" to="/comments">
-                    <ListItemGraphic className="icon" graphic={<MaterialIcon icon="folder" />} />
                     <ListItemText className="NavText" primaryText="Comments" />
                   </Link>
                 </ListItem>
                 {/* * * * */}
                 {!this.state.loggedIn && <ListItem>
                   <Link className="link" to="/register">
-                    <ListItemGraphic className="icon" graphic={<MaterialIcon icon="folder" />} />
                     <ListItemText className="NavText" primaryText="Register" />
                   </Link>
                 </ListItem>}
@@ -137,7 +124,6 @@ class App extends Component {
 
                 {!this.state.loggedIn && <ListItem>
                   <Link className="link" to="/login">
-                    <ListItemGraphic className="icon" graphic={<MaterialIcon icon="folder" />} />
                     <ListItemText className="NavText" primaryText="Login" />
                   </Link>
                 </ListItem>}
@@ -146,7 +132,6 @@ class App extends Component {
 
                 {this.state.loggedIn && <ListItem>
                   <Link className="link" to="/logout">
-                    <ListItemGraphic className="icon" graphic={<MaterialIcon icon="folder" />} />
                     <ListItemText className="NavText" primaryText="Logout" />
                   </Link>
                 </ListItem>}
@@ -171,13 +156,12 @@ class App extends Component {
 
 
               <Route path="/" exact component={Home} />
-              <Route path="/start" component={withAuth(Start)} />
               <Route exact path="/areas" component={withAuth(AreaList)}/>
               <Route path="/properties/:id" component={withAuth(PropertyList)}/>
               <Route path="/register" component={Register} />
               <Route path="/login" render={(props) => <Login {...props} handleLogin={this.login} />} />
               <Route path="/logout" render={this.logout}/>
-              <Route exact path="/comments" component={CommentList}/>
+              <Route exact path="/comments" component={withAuth(CommentList)}/>
               <Route path="/edit-comment/:id" component={EditComment}/>
               <Route path="/create-comment" component={CreateComment}/>
             </TopAppBarFixedAdjust>

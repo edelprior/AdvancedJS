@@ -32,7 +32,7 @@ app.use(cookieParser());
 
 // - - - - - DB CONNECTION  - - - - - - - -
 const mongo_uri = process.env.MONGODB_URL || `mongodb://localhost:27017/${dbname}`;
-// const mongo_uri = 'mongodb+srv://edel:Thehomeshow10.@react-ca2-5eh1m.mongodb.net/React-CA2?retryWrites=true';
+// const mongo_uri = 'mongodb+srv://edel:1234@react-ca2-5eh1m.mongodb.net/test?retryWrites=true';
 mongoose.connect(mongo_uri, { useNewUrlParser: true }, function(err) {
   if (err) {
     throw err;

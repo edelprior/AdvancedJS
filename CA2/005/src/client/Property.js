@@ -16,23 +16,23 @@ class Property extends Component {
 
   render() {
     return (
-
-      <Cell columns = {6}>
-        <Card className = "PropCard" outlined>
-          <CardPrimaryContent>
-            <h1>{this.props.name}</h1>
-            <CardMedia square imageUrl={this.props.image} />
-          </CardPrimaryContent>
-          <h5> {this.props.description} </h5>
-          <CardActions>
-            {this.props.bath}
-            <br/>
-            {this.props.size}
-          </CardActions>
-          <h2 className = "pricetag"> €{this.props.price}</h2>
-        </Card>
-      </Cell>
-
+      <Row>
+        <Cell columns = {12} >
+          <Card className = "PropCard" outlined>
+            <CardPrimaryContent>
+              <h1>{this.props.name}</h1>
+              <CardMedia square imageUrl={this.props.image} />
+            </CardPrimaryContent>
+            <h5> {this.props.description} </h5>
+            <CardActions>
+              {this.props.bath}
+              <br/>
+              {this.props.size}
+            </CardActions>
+            <h2 className = "pricetag"> €{this.props.price}</h2>
+          </Card>
+        </Cell>
+      </Row>
     );
   };
 
