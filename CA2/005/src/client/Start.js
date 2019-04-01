@@ -38,8 +38,10 @@ export default class Start extends Component {
   render() {
 
     return (
-
-      <h1> start </h1>
+      <div>
+        <h2> {this.state.message} </h2>
+        <h1> start </h1>
+      </div>
     );
   }
 }

@@ -27,7 +27,7 @@ import Button from '@material/react-button';
 import Drawer, { DrawerAppContent, DrawerContent, DrawerHeader } from '@material/react-drawer';
 import MaterialIcon from '@material/react-material-icon';
 import List, { ListItem, ListItemGraphic, ListItemText } from '@material/react-list';
-import { Headline3 } from '@material/react-typography';
+import { Headline5 } from '@material/react-typography';
 import TopAppBar, { TopAppBarFixedAdjust } from '@material/react-top-app-bar';
 
 // - - - - - - Components - - - - - - - - - - - - - - //
@@ -37,8 +37,11 @@ import Home from './Home';
 import Start from './Start';
 import Login from './Login';
 import Register from './Register';
-import LecturerList from './LecturerList';
-import ModuleList from './ModuleList';
+import AreaList from './AreaList';
+import PropertyList from './PropertyList';
+import CreateComment from './CreateComment';
+import EditComment from './EditComment';
+import CommentList from './CommentList';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 
@@ -83,11 +86,11 @@ class App extends Component {
             <DrawerContent>
               <DrawerHeader>
                 <Link className="link" to="/">
-                  <ListItemGraphic className="logo" link="/" graphic={<MaterialIcon icon="book" />} />
+                  <ListItemGraphic className="logo" link="/" graphic={<MaterialIcon icon="home" />} />
                 </Link>
-                <Headline3>
-            ReactIt
-                </Headline3>
+                <Headline5>
+            React Properties
+                </Headline5>
 
               </DrawerHeader>
               {/* - - - - - - - - - - */}
@@ -110,9 +113,16 @@ class App extends Component {
                 {/* * * * */}
 
                 <ListItem>
-                  <Link className="link" to="/lecturers">
+                  <Link className="link" to="/areas">
                     <ListItemGraphic className="icon" graphic={<MaterialIcon icon="folder" />} />
-                    <ListItemText className="NavText" primaryText="Lecturers" />
+                    <ListItemText className="NavText" primaryText="Areas" />
+                  </Link>
+                </ListItem>
+
+                <ListItem>
+                  <Link className="link" to="/comments">
+                    <ListItemGraphic className="icon" graphic={<MaterialIcon icon="folder" />} />
+                    <ListItemText className="NavText" primaryText="Comments" />
                   </Link>
                 </ListItem>
                 {/* * * * */}
@@ -162,12 +172,14 @@ class App extends Component {
 
               <Route path="/" exact component={Home} />
               <Route path="/start" component={withAuth(Start)} />
-              <Route exact path="/lecturers" component={withAuth(LecturerList)}/>
-              <Route path="/module/:id" component={ModuleList}/>
+              <Route exact path="/areas" component={withAuth(AreaList)}/>
+              <Route path="/properties/:id" component={withAuth(PropertyList)}/>
               <Route path="/register" component={Register} />
               <Route path="/login" render={(props) => <Login {...props} handleLogin={this.login} />} />
               <Route path="/logout" render={this.logout}/>
-
+              <Route exact path="/comments" component={CommentList}/>
+              <Route path="/edit-comment/:id" component={EditComment}/>
+              <Route path="/create-comment" component={CreateComment}/>
             </TopAppBarFixedAdjust>
           </DrawerAppContent>
         </div>

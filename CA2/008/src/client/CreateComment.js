@@ -1,22 +1,6 @@
-{/*
-  Functionality of CreateComment.js :
-
-  - The Create Function of the CRUD
-  - Holds a router that renders the '/' of the server, the commentList
-  - Has the routes that will be accessed in the other components for CRUD
-  */}
-
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
-
-// - - - - - Material Imports - - - - - - - - - - //
-import {Cell, Grid, Row} from '@material/react-layout-grid';
-import TextField, {HelperText, Input} from '@material/react-text-field';
-import Button from '@material/react-button';
-
-// - - - - - - - - - - - - - - - - - - - - - //
 
 class CreateComment extends Component {
   constructor(props) {
@@ -43,28 +27,26 @@ class CreateComment extends Component {
     // send a POST request to the server
     // the request includes the state, which is the info. for the new Comment to be created
     axios.post('/api/comments', this.state)
-      .then(res => this.props.history.push('/comments')) // if successful go to home
+      .then(res => this.props.history.push('/')) // if successful go to home
       .catch(error => {
         console.log(error);
       });
   }
 
   render() {
+    // note: name of the inputs must match the property names in state
     return (
-      <Grid>
-        <form onSubmit={this.handleSubmit} className ="Form">
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <h2>Create New comment</h2>
+          <label>
+            Comment:
+            <input type="text" name="comment" value={this.state.comment} onChange={this.handleChange} />
+          </label>
 
-          <TextField textarea  className ="Form" label = 'Write your comment here'>
-            <Input type="text"
-              name="comment"
-              value={this.state.comment}
-              onChange={this.handleChange}/>
-          </TextField>
-          <br/>
-
-          <Button type="submit" value="Submit">Upload Comment</Button>
+          <input type="submit" value="Submit" />
         </form>
-      </Grid>
+      </div>
     );
   }
 }

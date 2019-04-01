@@ -1,4 +1,6 @@
-// LOG IN BACK END
+// - - - - - - - - - - - - - - - - - - - - - -
+// - - - - Login, One-Many, and CRUD - - - - -
+// - - - - - - - - - - - - - - - - - - - - - -
 
 // - - - - - - - - - - - - - - - - - - - - - -
 const express = require('express');
@@ -11,19 +13,17 @@ const ObjectID = require('mongodb').ObjectID;
 const MongoClient = require('mongodb').MongoClient;
 
 // - - - - - - - - - - - - - - - - - - - - - -
-const Lecturer = require('./models/Lecturer');
-const Module = require('./models/Module');
-const Comment = require('./models/Comment');
+const Area = require('./models/Area');
+const Property = require('./models/Property');
 const withAuth = require('./middleware');
 const User = require('./models/User');
-
+const Comment = require('./models/Comment');
 const app = express();
 const dbname = 'REACTCA2'; // change to match your database name
 const secret = 'secret_should_not_be_in_git';
 
 let db;
 // - - - - - - - - - - - - - - - - - - - - - -
-
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -125,52 +125,48 @@ app.get('/api/logout', withAuth, function(req, res) {
 // - - - - ONE - MANY CODE - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - -
 
-app.get('/api/lecturers', function(req, res) {
-  Lecturer.find({}, function(err, data) {
+app.get('/api/areas', function(req, res) {
+  Area.find({}, function(err, data) {
     if (err) throw err;
 
     res.send(data);
   });
 });
 
-app.get('/api/modules', function(req, res) {
-  Module.find({}, function(err, data) {
+app.get('/api/properties', function(req, res) {
+  Property.find({}, function(err, data) {
     if (err) throw err;
 
     res.send(data);
   });
 });
 
-app.get('/api/lecturers/:id', function(req, res) {
-  Lecturer.findOne({_id: req.params.id}, function(err, data) {
+app.get('/api/areas/:id', function(req, res) {
+  Area.findOne({_id: req.params.id}, function(err, data) {
     if (err) throw err;
 
     res.send(data);
   });
 });
 
-app.get('/api/lecturers/:id/modules', function(req, res) {
-  Lecturer.findOne({_id: req.params.id}, function(err, data) {
+app.get('/api/areas/:id/properties', function(req, res) {
+  Area.findOne({_id: req.params.id}, function(err, data) {
     if (err) throw err;
 
-    Module.find({lecturer_id: data._id}, function(err, modules) {
+    Property.find({area_id: data._id}, function(err, properties) {
       if (err) throw err;
 
-      res.send(modules);
+      res.send(properties);
     });
   });
 });
 
-// ------------------------------------------------- //
-// ---------------- Comments for CRUD -------------- //
-// ------------------------------------------------- //
 
+// - - - - - - - - - - - - - - - - - - - - - -
+// - - - -  CRUD Code  - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - -
 
-
-
-// define the various endpoints
-
-// retrieve all comment objects from DB
+// retrieve all Comment objects from DB
 app.get('/api/comments', (req, res) => {
   Comment.find({}, (err, result) => {
     if (err) throw err;
@@ -200,9 +196,9 @@ app.delete('/api/comments', (req, res) => {
   });
 });
 
-// create new comment based on info supplied in request body
+// create new Comment based on info supplied in request body
 app.post('/api/comments', (req, res) => {
-  // create a new Comment object using the Mongoose model and the data sent in the POST
+  // create a new comment object using the Mongoose model and the data sent in the POST
   const comment = new Comment(req.body);
   // save this object to the DB
   comment.save((err, result) => {
@@ -215,11 +211,11 @@ app.post('/api/comments', (req, res) => {
 
 // update comment based on info supplied in request body
 app.put('/api/comments', (req, res) => {
-  // get the ID of the Comment to be updated
+  // get the ID of the comment to be updated
   const id  = req.body._id;
   // remove the ID so as not to overwrite it when updating
   delete req.body._id;
-  // find a user matching this ID and update their details
+  // find a comment matching this ID and update their details
   Comment.updateOne( {_id: new ObjectID(id) }, {$set: req.body}, (err, result) => {
     if (err) throw err;
 
@@ -228,4 +224,5 @@ app.put('/api/comments', (req, res) => {
   });
 });
 
-app.listen(process.env.PORT || 8080);
+
+app.listen(process.env.PORT || 8080, () => console.log(`Listening on port ${process.env.PORT || 8080}!`));

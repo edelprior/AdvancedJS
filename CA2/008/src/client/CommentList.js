@@ -1,37 +1,13 @@
-{/*
-  Functionality of CommentList.js :
-
-  - Gets a list of comments from the DB and returns them
-  - returns in a comment Component, and offers Delete and
-  - Edit functions of each, including re-rendering so the
-  - List gets updated with each interaction.
-  */}
-
-// - - - - - React & Axios & Link - - - - - - //
-
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import './App.scss';
-
-
-// - - - - - Material Imports - - - - - - - - //
-import Button from '@material/react-button';
-
-// - - - - - Components - - - - - - - - - - //
 import Comment from './Comment';
-
-// - - - - - - - - - - - - - - - - - - - - - //
-
-
+import axios from 'axios';
+import './app.css';
 
 class CommentList extends Component {
   constructor(props) {
     super(props);
-    {/*  store the array that will be gotten from the DB
-         in an  array in the state & updatecomments to fetch
-         the data from the DB, aswell as handleDelete to give
-         delete function part of the CRUD */}
+    // store the array of comments in state
     this.state = { comments: [] };
 
     this.updateComments = this.updateComments.bind(this);
@@ -88,15 +64,13 @@ class CommentList extends Component {
 
     return (
       <div>
-        <h2> What People are thinking </h2>
-        <div>{commentList}</div>
-        <br/>
         <Link to={'/create-comment'}>
-          <Button type="button">
+          <button type="button">
           Create new comment
-          </Button>
+          </button>
         </Link>
-
+        <h2>All comments</h2>
+        <div>{commentList}</div>
       </div>
     );
   }

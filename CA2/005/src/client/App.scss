@@ -31,6 +31,7 @@
   transform: translate(-50%, -50%);
   }
 
+
 .LoginEmail {
   height: 20%;
   width: 110%;
@@ -96,6 +97,11 @@
   margin-left: 40%;
 
 }
+
+.PropCard {
+  position: flex;
+  display: flex;
+}
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 
   .drawer-container {
@@ -136,6 +142,10 @@ icon {
   color: white;
 }
 
+.pricetag {
+  margin-left: 5%;
+}
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 
@@ -144,12 +154,12 @@ icon {
 .drawer {
   @include mdc-drawer-width(20%);
   @include mdc-drawer-item-icon-ink-color(black);
-  @include mdc-drawer-surface-fill-color($orange);
+  @include mdc-drawer-surface-fill-color($blue);
 }
 .NavText {
   height: 100%;
     @include mdc-list-item-primary-text-ink-color(black);
-    @include mdc-typography(headline5);
+    @include mdc-typography(body1);
 }
 .link {
     text-decoration: none;

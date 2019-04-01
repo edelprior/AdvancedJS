@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Lecturer from './Lecturer';
+import Area from './Area';
 import axios from 'axios';
 import './App.scss';
+import {Cell, Grid, Row} from '@material/react-layout-grid';
 
-class LecturerList extends Component {
+class AreaList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { lecturers: [] };
+    this.state = { areas: [] };
   }
 
   componentDidMount() {
-    axios.get('api/lecturers')
+    axios.get('api/areas')
       .then(response => {
-        this.setState({ lecturers: response.data });
+        this.setState({ areas: response.data });
       })
       .catch(error => {
         console.log(error);
@@ -23,21 +24,21 @@ class LecturerList extends Component {
 
   render() {
 
-    const lecturerList = this.state.lecturers.map(u => (
-      <Lecturer
+    const areaList = this.state.areas.map(u => (
+      <Area
         key={u._id}
         id={u._id}
         name={u.name}
+        image = {u.image}
       />
     ));
 
     return (
       <div>
-        <h1>List</h1>
-        <div>{lecturerList}</div>
+        <div>{areaList}</div>
       </div>
     );
   }
 }
 
-export default LecturerList;
+export default AreaList;
