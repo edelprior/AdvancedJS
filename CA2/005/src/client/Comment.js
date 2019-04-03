@@ -39,6 +39,8 @@ class Comment extends React.Component {
             <List>
               <ListItem>
                 <Body1>   {this.props.comment} </Body1>
+                <Button className = "pricetag"> €{this.props.price}</Button>
+
               </ListItem>
             </List>
             {/* - - - - - - - - - - - - -*/}

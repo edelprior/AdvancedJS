@@ -1,7 +1,7 @@
 {
-  "name": "mern-full-stack-auth-state",
+  "name": "working-CA2",
   "version": "1.0.0",
-  "description": "Demo Full Stack MongoDB, Express, React & Node",
+  "description": "REACTCA2",
   "main": "src/server/index.js",
   "scripts": {
     "build": "webpack --mode production",

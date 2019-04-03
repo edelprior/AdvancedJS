@@ -78,16 +78,6 @@ export default class Register extends Component {
                   required
                 />
               </TextField>
-              <TextField className = "RegisterPassword" outlined>
-                <Input
-                  type="password"
-                  name="password"
-                  placeholder="re-enter password"
-                  value={this.state.secondpassword}
-                  onChange={this.handleInputChange}
-
-                />
-              </TextField>
             </form>
           </Cell>
         </Row>

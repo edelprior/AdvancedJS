@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Headline4, Headline5, Body1, Body2, Button} from '@material/react-typography';
 import {Cell, Grid, Row} from '@material/react-layout-grid';
 import Card, {
   CardPrimaryContent,
@@ -8,7 +9,6 @@ import Card, {
   CardActionButtons,
   CardActionIcons
 } from '@material/react-card';
-import Button from '@material/react-button';
 import MaterialIcon from '@material/react-material-icon';
 
 
@@ -16,23 +16,28 @@ class Property extends Component {
 
   render() {
     return (
-      <Row>
-        <Cell columns = {12} >
-          <Card className = "PropCard" outlined>
-            <CardPrimaryContent>
-              <h1>{this.props.name}</h1>
-              <CardMedia square imageUrl={this.props.image} />
-            </CardPrimaryContent>
-            <h5> {this.props.description} </h5>
-            <CardActions>
+      <Cell columns = {6}>
+        <Card className = "PropCard" outlined>
+          <CardPrimaryContent>
+            <Headline4>{this.props.name}</Headline4>
+            <CardMedia square imageUrl={this.props.image} />
+          </CardPrimaryContent>
+          <Body1> {this.props.description} </Body1>
+          <CardActions>
+            <MaterialIcon className = "propIcons" icon="pool" />
+            <Button>
               {this.props.bath}
-              <br/>
+            </Button>
+          </CardActions>
+          <CardActions>
+            <MaterialIcon  className = "propIcons"  icon="hotel" />
+            <Button>
               {this.props.size}
-            </CardActions>
-            <h2 className = "pricetag"> €{this.props.price}</h2>
-          </Card>
-        </Cell>
-      </Row>
+            </Button>
+          </CardActions>
+          <Button className = "pricetag"> €{this.props.price}</Button>
+        </Card>
+      </Cell>
     );
   };
 
