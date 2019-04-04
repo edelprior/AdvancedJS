@@ -26,7 +26,7 @@ import Button from '@material/react-button';
 import Drawer, { DrawerAppContent, DrawerContent, DrawerHeader } from '@material/react-drawer';
 import MaterialIcon from '@material/react-material-icon';
 import List, { ListItem, ListItemGraphic, ListItemText } from '@material/react-list';
-import { Headline1 } from '@material/react-typography';
+import { Headline3 } from '@material/react-typography';
 import TopAppBar, { TopAppBarFixedAdjust } from '@material/react-top-app-bar';
 
 // - - - - - - Components - - - - - - - - - - - - - - //
@@ -87,11 +87,9 @@ class App extends Component {
                 <Link className="link" to="/">
                   <ListItemGraphic className="logo" link="/" graphic={<MaterialIcon icon="home" />} />
                 </Link>
-                <Headline1>
-                Mad
-                </Headline1>
-
               </DrawerHeader>
+              <br/>
+              <br/>
               {/* - - - - - - - - - - */}
               <List className="NavList">
                 <ListItem>
@@ -157,11 +155,11 @@ class App extends Component {
 
               <Route path="/" exact component={Home} />
               <Route exact path="/areas" component={withAuth(AreaList)}/>
-              <Route path="/properties/:id" component={withAuth(PropertyList)}/>
+              <Route path="/areas/:name/properties/:id" component={PropertyList}/>
               <Route path="/register" component={Register} />
               <Route path="/login" render={(props) => <Login {...props} handleLogin={this.login} />} />
               <Route path="/logout" render={this.logout}/>
-              <Route exact path="/comments" component={withAuth(CommentList)}/>
+              <Route path="/comments" component ={withAuth(CommentList)} />
               <Route path="/edit-comment/:id" component={EditComment}/>
               <Route path="/create-comment" component={CreateComment}/>
             </TopAppBarFixedAdjust>

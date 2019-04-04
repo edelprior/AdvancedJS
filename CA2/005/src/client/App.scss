@@ -98,10 +98,18 @@
 
 }
 
-// .PropCard {
-//   position: flex;
-//   display: flex;
-// }
+.PropCard {
+  padding: 2%;
+  background-color: $grey;
+}
+.areaCard {
+  padding: 2%;
+  background-color: $grey;
+}
+.propIcons {
+  padding: 3%;
+}
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 
   .drawer-container {
@@ -126,7 +134,14 @@
     @include mdc-top-app-bar-fill-color($transparent);
     @include mdc-top-app-bar-icon-ink-color($blue);
 }
+.BidLink {
+  float: right;
+  transform: scale(1.45);
+}
 
+.commentList {
+  background-color: $grey;
+}
 icon {
   transform: scale(1.45);
 }
@@ -140,10 +155,6 @@ icon {
   margin-bottom: 10%;
   transform: scale(4);
   color: white;
-}
-
-.pricetag {
-  margin-left: 5%;
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
@@ -161,8 +172,9 @@ icon {
     @include mdc-list-item-primary-text-ink-color(black);
     @include mdc-typography(body1);
 }
-.link {
+a {
     text-decoration: none;
+    color: black !important;
   }
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 

@@ -13,6 +13,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.scss';
+import MaterialIcon from '@material/react-material-icon';
+import { Body1 } from '@material/react-typography';
 
 
 // - - - - - Material Imports - - - - - - - - //
@@ -39,10 +41,14 @@ class CommentList extends Component {
   }
 
   componentDidMount() {
-    // when the component mo THIS IS THE FUNCTION
-    this.updateComments();
+    axios.get(`api/properties/${this.props.match.params.id}/comments`)
+      .then(response => {
+        this.setState({ properties: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
-
   updateComments() {
     // make a GET request to the server for the comment data, store it in state
     axios.get('api/comments')
@@ -88,14 +94,16 @@ class CommentList extends Component {
 
     return (
       <div>
-        <h2> What People are thinking </h2>
-        <div>{commentList}</div>
-        <br/>
-        <Link to={'/create-comment'}>
-          <Button type="button">
-          Create new comment
-          </Button>
+
+        <Link className = "BidLink" to={'/create-comment'}>
+          <MaterialIcon className = "BidLink" icon = "add" type="button"/>
+
+
         </Link>
+
+        <div className = "commentList">{commentList}</div>
+
+
 
       </div>
     );

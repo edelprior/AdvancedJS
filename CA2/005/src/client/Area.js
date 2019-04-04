@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {Cell, Grid, Row} from '@material/react-layout-grid';
+import { Headline4, Body1 } from '@material/react-typography';
 import Card, {
   CardPrimaryContent,
   CardMedia,
@@ -13,29 +14,16 @@ import MaterialIcon from '@material/react-material-icon';
 class Areas extends Component {
   render() {
     return (
-      <Grid>
-        <Row>
-          <Cell columns = {6}>
-            <Card>
-              <CardPrimaryContent>
-                <h1>{this.props.name}</h1>
-                <CardMedia square imageUrl={this.props.image} />
-              </CardPrimaryContent>
-
-              <CardActions>
-                <CardActionButtons>
-                  <Link className = "link" to={`/properties/${this.props.id}`}>
-                    <Button outlined  type="button">
-                      View Properties
-                    </Button>
-                  </Link>
-                </CardActionButtons>
-              </CardActions>
-            </Card>
-          </Cell>
-        </Row>
-      </Grid>
-
+      <Cell columns={6}>
+        <Link to={`/areas/${this.props.name}/properties/${this.props.id}`}>
+          <Card outlined className = "areaCard">
+            <CardPrimaryContent>
+              <Headline4 className = "PropertyName">{this.props.name}</Headline4>
+              <CardMedia square imageUrl={this.props.image} />
+            </CardPrimaryContent>
+          </Card>
+        </Link>
+      </Cell>
     );
   }
 }

@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const secret = 'secret_should_not_be_in_git';
+const secret = 'secret';
 
 const withAuth = function(req, res, next) {
   const token =

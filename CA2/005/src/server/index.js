@@ -19,8 +19,8 @@ const withAuth = require('./middleware');
 const User = require('./models/User');
 const Comment = require('./models/Comment');
 const app = express();
-const dbname = 'REACTCA2'; // change to match your database name
-const secret = 'secret_should_not_be_in_git';
+const dbname = 'REACT-CA2';
+const secret = 'secret';
 
 let db;
 // - - - - - - - - - - - - - - - - - - - - - -
@@ -31,8 +31,9 @@ app.use(cookieParser());
 
 
 // - - - - - DB CONNECTION  - - - - - - - -
-const mongo_uri = process.env.MONGODB_URL || `mongodb://localhost:27017/${dbname}`;
-// const mongo_uri = 'mongodb+srv://edel:1234@react-ca2-5eh1m.mongodb.net/test?retryWrites=true';
+// const mongo_uri = process.env.MONGODB_URL || `mongodb://localhost:27017/${dbname}`;
+const mongo_uri = 'mongodb+srv://edel:1234@react-ca2-5eh1m.mongodb.net/REACTCA2?retryWrites=true';
+
 mongoose.connect(mongo_uri, { useNewUrlParser: true }, function(err) {
   if (err) {
     throw err;
@@ -123,6 +124,7 @@ app.get('/api/logout', withAuth, function(req, res) {
 
 // - - - - - - - - - - - - - - - - - - - - - -
 // - - - - ONE - MANY CODE - - - - - - - - - -
+// - - - - FOR AREA - PROP - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - -
 
 app.get('/api/areas', function(req, res) {
@@ -141,8 +143,25 @@ app.get('/api/properties', function(req, res) {
   });
 });
 
+app.get('/api/comments', function(req, res) {
+  Comment.find({}, function(err, data) {
+    if (err) throw err;
+
+    res.send(data);
+  });
+});
+
+
 app.get('/api/areas/:id', function(req, res) {
   Area.findOne({_id: req.params.id}, function(err, data) {
+    if (err) throw err;
+
+    res.send(data);
+  });
+});
+
+app.get('/api/property/:id', function(req, res) {
+  Property.findOne({_id: req.params.id}, function(err, data) {
     if (err) throw err;
 
     res.send(data);
@@ -154,6 +173,18 @@ app.get('/api/areas/:id/properties', function(req, res) {
     if (err) throw err;
 
     Property.find({area_id: data._id}, function(err, properties) {
+      if (err) throw err;
+
+      res.send(properties);
+    });
+  });
+});
+
+app.get('/api/properties/:id/comments', function(req, res) {
+  Property.findOne({_id: req.params.id}, function(err, data) {
+    if (err) throw err;
+
+    Comment.find({area_id: data._id}, function(err, properties) {
       if (err) throw err;
 
       res.send(properties);

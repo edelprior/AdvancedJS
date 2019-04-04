@@ -35,7 +35,17 @@ class AreaList extends Component {
 
     return (
       <div>
-        <div>{areaList}</div>
+        <Grid>
+          <Row>
+            <Cell columns={1}/>
+            <Cell columns = {10}>
+              <Row>
+                {areaList}
+              </Row>
+            </Cell>
+            <Cell columns={1}/>
+          </Row>
+        </Grid>
       </div>
     );
   }
