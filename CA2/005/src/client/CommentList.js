@@ -15,7 +15,7 @@ import axios from 'axios';
 import './App.scss';
 import MaterialIcon from '@material/react-material-icon';
 import { Body1 } from '@material/react-typography';
-
+import Property from './Property';
 
 // - - - - - Material Imports - - - - - - - - //
 import Button from '@material/react-button';
@@ -34,7 +34,7 @@ class CommentList extends Component {
          in an  array in the state & updatecomments to fetch
          the data from the DB, aswell as handleDelete to give
          delete function part of the CRUD */}
-    this.state = { comments: [] };
+    this.state = { comments: [], property: '' };
 
     this.updateComments = this.updateComments.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -43,7 +43,10 @@ class CommentList extends Component {
   componentDidMount() {
     axios.get(`api/properties/${this.props.match.params.id}/comments`)
       .then(response => {
-        this.setState({ properties: response.data });
+        this.setState({
+          comments: response.data.comments,
+          property: response.data.data
+        });
       })
       .catch(error => {
         console.log(error);
@@ -80,22 +83,32 @@ class CommentList extends Component {
   }
 
   render() {
+    console.log(this.state.property);
     // for each comment object, produce a comment Component
     const commentList = this.state.comments.map(u => (
       <Comment
         key={u._id}
         id={u._id}
         comment={u.comment}
+        price={u.price}
         handleDelete={this.handleDelete}
       />
 
     ));
-    {console.log(this.state);}
 
     return (
       <div>
+        <Property
+          id={this.state.property._id}
+          name={this.state.property.name}
+          size={this.state.property.size}
+          bath = {this.state.property.bath}
+          description = {this.state.property.description}
+          image = {this.state.property.image}
+          price = {this.state.property.price}
+        />
 
-        <Link className = "BidLink" to={'/create-comment'}>
+        <Link className = "BidLink" to={`/create-comment/${this.props.match.params.id}`}>
           <MaterialIcon className = "BidLink" icon = "add" type="button"/>
 
 

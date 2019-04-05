@@ -15,6 +15,8 @@ class Areas extends Component {
   render() {
     return (
       <Cell columns={6}>
+
+
         <Link to={`/areas/${this.props.name}/properties/${this.props.id}`}>
           <Card outlined className = "areaCard">
             <CardPrimaryContent>

@@ -106,12 +106,6 @@ class App extends Component {
                   </Link>
                 </ListItem>
 
-                <ListItem>
-                  <Link className="link" to="/comments">
-                    <ListItemText className="NavText" primaryText="Comments" />
-                  </Link>
-                </ListItem>
-                {/* * * * */}
                 {!this.state.loggedIn && <ListItem>
                   <Link className="link" to="/register">
                     <ListItemText className="NavText" primaryText="Register" />
@@ -154,14 +148,14 @@ class App extends Component {
 
 
               <Route path="/" exact component={Home} />
-              <Route exact path="/areas" component={withAuth(AreaList)}/>
+              <Route exact path="/areas" component={AreaList}/>
               <Route path="/areas/:name/properties/:id" component={PropertyList}/>
               <Route path="/register" component={Register} />
               <Route path="/login" render={(props) => <Login {...props} handleLogin={this.login} />} />
               <Route path="/logout" render={this.logout}/>
-              <Route path="/comments" component ={withAuth(CommentList)} />
+              <Route path="/properties/:id/comments" component ={CommentList} />
               <Route path="/edit-comment/:id" component={EditComment}/>
-              <Route path="/create-comment" component={CreateComment}/>
+              <Route path="/create-comment/:id" component={CreateComment}/>
             </TopAppBarFixedAdjust>
           </DrawerAppContent>
         </div>

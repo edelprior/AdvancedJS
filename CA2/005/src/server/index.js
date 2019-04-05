@@ -143,15 +143,6 @@ app.get('/api/properties', function(req, res) {
   });
 });
 
-app.get('/api/comments', function(req, res) {
-  Comment.find({}, function(err, data) {
-    if (err) throw err;
-
-    res.send(data);
-  });
-});
-
-
 app.get('/api/areas/:id', function(req, res) {
   Area.findOne({_id: req.params.id}, function(err, data) {
     if (err) throw err;
@@ -184,10 +175,11 @@ app.get('/api/properties/:id/comments', function(req, res) {
   Property.findOne({_id: req.params.id}, function(err, data) {
     if (err) throw err;
 
-    Comment.find({area_id: data._id}, function(err, properties) {
+    Comment.find({property_id: data._id}, function(err, comments) {
       if (err) throw err;
 
-      res.send(properties);
+      res.send({data, comments});
+
     });
   });
 });
@@ -227,10 +219,18 @@ app.delete('/api/comments', (req, res) => {
   });
 });
 
+
+
 // create new Comment based on info supplied in request body
-app.post('/api/comments', (req, res) => {
+app.post('/api/comments/:id', (req, res) => {
+
+  console.log(req.body);
   // create a new comment object using the Mongoose model and the data sent in the POST
-  const comment = new Comment(req.body);
+  const comment = new Comment({
+    comment: req.body.comment,
+    property_id: req.params.id
+  });
+
   // save this object to the DB
   comment.save((err, result) => {
     if (err) throw err;

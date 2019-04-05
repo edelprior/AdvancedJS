@@ -42,8 +42,8 @@ class CreateComment extends Component {
 
     // send a POST request to the server
     // the request includes the state, which is the info. for the new Comment to be created
-    axios.post('/api/comments', this.state)
-      .then(res => this.props.history.push('/comments')) // if successful go to home
+    axios.post(`/api/comments/${this.props.match.params.id}`, this.state)
+      .then(res => this.props.history.push('/')) // if successful go to home
       .catch(error => {
         console.log(error);
       });
